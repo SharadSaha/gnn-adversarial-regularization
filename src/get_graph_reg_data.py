@@ -24,7 +24,7 @@ class HParams(object):
     self.OPT = 'adam'
     self.METRICS = ['accuracy']
     ### training parameters
-    self.train_epochs = 15
+    self.train_epochs = 50
     self.batch_size = 40
     ### eval parameters
     self.eval_steps = None  # All instances in the test set are evaluated.
