@@ -1,13 +1,8 @@
 import os
-import yaml
 import argparse
-import glob
-import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 import tensorflow as tf
 from get_data import read_params,get_data
-from tempfile import TemporaryFile
 
 def load_and_save(config_path):
     config = read_params(config_path)
