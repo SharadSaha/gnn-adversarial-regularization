@@ -7,10 +7,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 
+
+# read the params.yaml configs
+
 def read_params(config_path):
     with open(config_path) as yaml_file:
         config = yaml.safe_load(yaml_file)
     return config
+
+
+# get data from the data source directory
 
 def get_data(config_path):
     config = read_params(config_path)
@@ -27,11 +33,16 @@ def get_data(config_path):
     print(data.shape)
     return data
 
+
+# plot an image from dataset
+
 def plot(data):
   image,label = data
   plt.imshow(tf.squeeze(image))
   plt.show()
   print("\nLabel: ",label)
+
+
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()

@@ -4,6 +4,9 @@ import numpy as np
 import tensorflow as tf
 from get_data import read_params,get_data
 
+
+# get the data and save the raw data
+
 def load_and_save(config_path):
     config = read_params(config_path)
     data = get_data(config_path)
