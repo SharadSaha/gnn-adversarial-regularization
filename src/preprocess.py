@@ -1,3 +1,4 @@
+import os
 import argparse
 import numpy as np
 import tensorflow as tf
@@ -52,9 +53,29 @@ def process_images(data,config_path):
     return processed_data
 
 
+# save the processed data
+
+def save_data(processed_data,config_path):
+    config = read_params(config_path)
+    processed_train_data_path = os.path.join(config['split_data']['train_path1'],config['split_data']['train_path2'],config['split_data']['train_path3'],'train_data.npy')
+    processed_test_data_path = os.path.join(config['split_data']['test_path1'],config['split_data']['test_path2'],config['split_data']['test_path3'],'test_data.npy')
+
+    with open(processed_train_data_path, 'wb') as f:
+        np.save(f, np.array(processed_data[0]))
+    with open(processed_test_data_path, 'wb') as f:
+        np.save(f, np.array(processed_data[1]))
+
+    with open(processed_train_data_path, 'rb') as f:
+        loaded_data_1 = np.load(f,allow_pickle=True)
+    with open(processed_test_data_path, 'rb') as f:
+        loaded_data_2 = np.load(f,allow_pickle=True)
+    print(loaded_data_1.shape,loaded_data_2.shape)
+
+
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
     args.add_argument("--config",default="params.yaml")
     parsed_args = args.parse_args()
     data = get_data(config_path=parsed_args.config)
     processed_data = process_images(data,config_path=parsed_args.config)
+    save_data(processed_data,config_path=parsed_args.config)
