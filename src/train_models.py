@@ -16,7 +16,7 @@ hp = HParams()
 
 def train_base_model(X_train,Y_train,X_test,Y_test):
     base_model = get_base_model()
-    callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=10)
+    callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=40)
 
     history_ = base_model.fit(
         X_train,Y_train,
@@ -27,17 +27,20 @@ def train_base_model(X_train,Y_train,X_test,Y_test):
     Y_pred_ = np.array([np.argmax(x) for x in base_model.predict(X_test)])
 
     print("Validation accuracy of base model: ",accuracy_score(Y_test,Y_pred_))
+    base_model.save(os.path.join('saved_models','base_model'))
     return history_
 
 
 def train_GNN_model(train_dataset,test_dataset,X_test,Y_test):
     gnn_model = get_GNN_Model()
-    callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=10)
+    callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=30)
     history = gnn_model.fit(
         train_dataset,
         validation_data=test_dataset,
         epochs=hp.train_epochs,
         callbacks=[callback])
+
+    gnn_model.save(os.path.join('saved_models','graph_reg_model'))
 
     Y_pred = np.array([np.argmax(x) for x in gnn_model.predict(X_test)])
 
@@ -49,6 +52,7 @@ def plot_history(history,history_):
     plt.plot(history.history['val_accuracy'])
     plt.plot(history_.history['val_accuracy'])
     plt.legend(['With graph reg','Without graph reg'])
+    plt.savefig(os.path.join('src','images','history.png'))
     plt.show()
 
 
