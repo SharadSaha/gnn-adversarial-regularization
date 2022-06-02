@@ -15,7 +15,9 @@ def load_mnist_data():
     return (x_train, y_train), (x_test, y_test)
 
 def plot(image,label):
+  plt.figure()
   plt.imshow(tf.squeeze(image))
+  plt.savefig(os.path.join('src','images','perturbation.png'))
   print("label : ",label)
   plt.show()
 
@@ -112,7 +114,6 @@ def display_perturbation(i,X_test,y_test,model):
   label = tf.reshape(label, (1,10))
   perturbations = get_adversarial_pattern(image, label,model)
   plot(perturbations[0] * 0.5 + 0.5,y_test[index])
-  plt.savefig(os.path.join('src','images','perturbation.png'))
   return perturbations,i,image,label
 
 
@@ -121,8 +122,8 @@ def display_image(image,label,desc,model):
   confidence = pred[0][label]
   plt.figure()
   plt.imshow(tf.squeeze(image[0]*0.5+0.5))
-  plt.savefig(os.path.join('src','images','adv {}.png'.format(desc)))
   plt.title('{} \n {} : {:.2f}% Confidence'.format(desc,label, confidence*100))
+  plt.savefig(os.path.join('src','images','adv {}.png'.format(desc)))
   plt.show()
 
 
