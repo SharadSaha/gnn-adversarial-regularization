@@ -45,7 +45,7 @@ This can be summarised using the following expression:
 ### Dataset
 ![App Screenshot](https://github.com/SharadSaha/gnn-adversarial-regularization/blob/main/src/images/grid3.png?raw=true)
 
-Access the dataset [here](https://drive.google.com/drive/folders/1iF8R25augxNtgyGYo4p9Ddu0pArzGcD7?usp=sharing).
+**Access the dataset [here](https://drive.google.com/drive/folders/1iF8R25augxNtgyGYo4p9Ddu0pArzGcD7?usp=sharing).**
 
 This dataset contains four types of shapes namely, category 1, category 2, category 3 and category 4.
 
