@@ -1,0 +1,19 @@
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - src/get_data.py
+    - src/load_data.py
+    - Dataset
+    outs:
+    - data/raw/raw_data.npy
+
+  process_data:
+    cmd: python src/preprocess.py --config=params.yaml
+    deps:
+    - src/get_data.py
+    - src/preprocess.py
+    - Dataset
+    outs:
+    - data/processed/train/train_data.npy
+    - data/processed/test/test_data.npy

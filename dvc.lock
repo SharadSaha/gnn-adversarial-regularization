@@ -1,0 +1,39 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: Dataset
+      md5: 0d81912558f7cbd93f93a1218b2f3194.dir
+      size: 19786796
+      nfiles: 470
+    - path: src/get_data.py
+      md5: 3db6bf32016398e13f08f9dd03b77d31
+      size: 1236
+    - path: src/load_data.py
+      md5: c89ac2e0ce8c4eb4d4adbc77f66f7784
+      size: 805
+    outs:
+    - path: data/raw/raw_data.npy
+      md5: aa73c8d5e1ca615e9c8def8577bb7795
+      size: 844828215
+  process_data:
+    cmd: python src/preprocess.py --config=params.yaml
+    deps:
+    - path: Dataset
+      md5: 0d81912558f7cbd93f93a1218b2f3194.dir
+      size: 19786796
+      nfiles: 470
+    - path: src/get_data.py
+      md5: 3db6bf32016398e13f08f9dd03b77d31
+      size: 1236
+    - path: src/preprocess.py
+      md5: f31bac0bd1be0c53b178e8f8594712f6
+      size: 2803
+    outs:
+    - path: data/processed/test/test_data.npy
+      md5: d61853f93161317ef7b5203cc19de192
+      size: 354029739
+    - path: data/processed/train/train_data.npy
+      md5: 2074da5631b7abb43392a12dfe88f87d
+      size: 118010217
