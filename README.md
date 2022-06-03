@@ -36,6 +36,7 @@ This can be summarised using the following expression:
 
 ![App Screenshot](https://github.com/SharadSaha/gnn-adversarial-regularization/blob/main/src/images/grid2.png?raw=true)
 
+**Key observation** : The confidence of the image classified as 0 decreases and goes as low as 0.02% on addition of pertubation, while the image still remains visually similar to a zero.
 
 ****
 ****
