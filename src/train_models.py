@@ -72,6 +72,8 @@ if __name__ == "__main__":
     train_dataset = make_dataset('Graph/data/augmented_train_data.tfr', True)
     test_dataset = make_dataset('Graph/data/test_data.tfr')
 
+    print(X_train.shape,Y_train.shape,X_test.shape,Y_test.shape)
+
     history = train_GNN_model(train_dataset,test_dataset,X_test,Y_test)
     history_ = train_base_model(X_train,Y_train,X_test,Y_test)
     plot_history(history,history_)

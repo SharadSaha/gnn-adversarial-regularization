@@ -12,7 +12,7 @@ def train_test_split(data,config_path):
     config = read_params(config_path)
     np.random.shuffle(data)
     n_images = len(data)
-    train_size = int(config['split_data']['test_size'] * n_images)
+    train_size = int(config['split_data']['train_size'] * n_images)
 
     train_data = data[:train_size]
     test_data = data[train_size:]

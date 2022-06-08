@@ -224,5 +224,3 @@ if __name__ == "__main__":
     next_record_id = create_records(X_train, Y_train,'Graph/data/train_data.tfr', 0)
     create_records(X_test,Y_test, 'Graph/data/test_data.tfr',next_record_id)
     create_augmented_data()
-    train_dataset = make_dataset('Graph/data/augmented_train_data.tfr', True)
-    test_dataset = make_dataset('Graph/data/test_data.tfr')
