@@ -53,7 +53,7 @@ This dataset contains four types of shapes namely, category 1, category 2, categ
 
 
 **Improvement of validation accuracy and robustness graph regularized CNN model:**
-* With the use of a graph regularized deep neural network instead of the conventional base CNN model, a significant improvement in validation accuracy can be achieved leading to a more robust CNN model which is fairly immune to adversarial attacks carried out with the help of techniques such as FGSM as explained above.
+* With the use of a graph regularized deep neural network instead of the conventional base CNN model, a significant improvement in learning performance and validation accuracy can be achieved leading to a more robust CNN model which is fairly immune to adversarial attacks carried out with the help of techniques such as FGSM as explained above.
 * The tensorflow neural structured learning module has been harnessed for synthesizing graph data structure to keep track of training examples that are similar and the degree of similarity that they have among themselves, which has then been fed to the neural network along with the training data to achieve graph regularization.
 
 
