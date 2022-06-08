@@ -44,7 +44,6 @@ This can be summarised using the following expression:
 ## Graph regularization
 
 ### Dataset
-![App Screenshot](https://github.com/SharadSaha/gnn-adversarial-regularization/blob/main/src/images/grid3.png?raw=true)
 
 **Access the dataset [here](https://drive.google.com/drive/folders/1iF8R25augxNtgyGYo4p9Ddu0pArzGcD7?usp=sharing).**
 
@@ -53,22 +52,9 @@ This dataset contains four types of shapes namely, category 1, category 2, categ
 
 
 
-**Necessary steps to build graph regularized CNN model:**
-* dataset loading and image preprocessing.
-
-* get image embeddings/ feature vectors with the help of pretrained Inception v3 model.
-
-* Generate the similarity graph using APIs from neural-structured-learning framework.
-
-* Generate augmented training data from the synthesized graph and sample features. The resulting training data will contain neighbor features in addition to the original node features.
-
-* Create the base convolutional neural network model usng Keras APIs.
-
-* Wrap the base model with the GraphRegularization wrapper class, which is provided by the NSL framework, to create a new graph Keras model. 
-
-* Training and evaluation of both base model and graph regularized model.
-
-* Comparison of performances of both models.
+**Improvement of validation accuracy and robustness graph regularized CNN model:**
+* With the use of a graph regularized deep neural network instead of the conventional base CNN model, a significant improvement in validation accuracy can be achieved leading to a more robust CNN model which is fairly immune to adversarial attacks carried out with the help of techniques such as FGSM as explained above.
+* The tensorflow neural structured learning module has been harnessed for synthesizing graph data structure to keep track of training examples that are similar and the degree of similarity that they have among themselves, which has then been fed to the neural network along with the training data to achieve graph regularization.
 
 
 ### Comparison of performances of both models
